@@ -1,5 +1,4 @@
-filename = '2022/input.txt'
-
+filename = 'input.txt'
 puzzle_input = [r.strip() for r in open(filename).readlines()]
 shape_score = {'X': 1, 'Y': 2, 'Z': 3}
 

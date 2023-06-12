@@ -1,4 +1,4 @@
-filename= '2022/input.txt'
+filename= 'input.txt'
 puzzle_input = [r.strip() for r in open(filename).readlines()]
 
 def priority(letter):
