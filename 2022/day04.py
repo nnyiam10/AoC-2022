@@ -1,32 +1,28 @@
-filename= "input.txt"
-puzzle_input = [r.strip() for r in open(filename).readlines()]
-
-def part_1(puzzle_input):
+def part1(puzzle_input):
     contained = 0
     for pair in puzzle_input:
-        range1, range2 = pair.split(",")
-        a,b = range1.split("-")
-        c,d = range2.split("-")     
+        (a,b), (c,d) = [map(int, r.split("-")) for r in pair.split(",")]
 
-        if int (a) <= int(c) <= int(d) <= int(b):
-            contained += 1
-        elif int(c) <= int(a) <= int(b) <= int(d):
+        if (a <= c and d <= b) or (c <= a and b <= d):
             contained += 1
     return contained
 
-def part_2(puzzle_input):
+def part2(puzzle_input):
     overlap = 0
     for pair in puzzle_input:
-        range1, range2 = pair.split(",")
-        a,b = range1.split("-")
-        c,d = range2.split("-")
-
-        if int(a) <= int(c) <= int(b):
-            overlap += 1 
-        elif int(c) <= int(a) <= int(d):
-            overlap += 1 
-    
+        (a,b), (c,d) = [map(int, r.split("-")) for r in pair.split(",")]
+        if b >= c and a <= d:
+            overlap += 1
     return overlap
 
-print(part_2(puzzle_input))
         
+def main():
+    filename = "2022/input.txt"
+    with open(filename) as f:
+        puzzle_input = [line.strip() for line in f]
+
+    print(part1(puzzle_input))
+    print(part2(puzzle_input))
+
+if __name__ == "__main__":
+    main()

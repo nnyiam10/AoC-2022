@@ -1,6 +1,3 @@
-filename= "input.txt"
-puzzle_input = [r for r in open(filename).readlines()]
-
 def arrange_creates(puzzle_input):
     row_length = len(puzzle_input[0])
     crates = {}
@@ -31,13 +28,21 @@ def instructions(puzzle_input, crates, part):
         res += crates[key][0]
     return "".join(res)
 
-#Part 1 
 def part1(puzzle_input):
     (updated_input, crates) = arrange_creates(puzzle_input)
     return instructions(updated_input, crates, 1)
 
-#Part 2
 def part2(puzzle_input):
     (updated_input, crates) = arrange_creates(puzzle_input)
     return instructions(updated_input, crates, 2)
     
+def main():
+    filename = "2022/input.txt"
+    with open(filename) as f:
+        puzzle_input = [line for line in f]
+    
+    print(part1(puzzle_input))
+    print(part2(puzzle_input))
+
+if __name__ == "__main__":
+    main()
