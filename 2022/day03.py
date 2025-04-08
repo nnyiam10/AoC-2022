@@ -1,40 +1,31 @@
-filename= 'input.txt'
-puzzle_input = [r.strip() for r in open(filename).readlines()]
-
 def priority(letter):
-    if letter.isupper():
-        return ord(letter) - 38
-    else:
-        return ord(letter) - 96
+    return ord(letter) - 38 if letter.isupper() else ord(letter) - 96
 
 def part1(puzzle_input):
     total_priority = 0
-    
     for line in puzzle_input:
-        first = line[:len(line)//2]
-        second = line[len(line)//2:]
-
-        s = set(first)
-        for letter in second:
-            if letter in s:
-                total_priority += priority(letter)
-                break
+        half = len(line)//2
+        first, second = line[:half], line[half:]
+        seen = set(first)
+        total_priority += next(priority(c) for c in second if c in seen)
     return total_priority
 
 def part2(puzzle_input):
     total_priority = 0
-    
     for i in range(0, len(puzzle_input), 3):
-        first = puzzle_input[i]
-        second = puzzle_input[i+1]
-        third = puzzle_input[i+2]
-
-        s = set(first)
-        s2 = set(second)
-        s3 = set(third)
-
-        res = s.intersection(s2, s3)
-        total_priority += priority(res.pop())
+        group = puzzle_input[i:i+3]
+        s1, s2, s3 = set(group[0]), set(group[1]), set(group[2])
+        common = s1.intersection(s2, s3)
+        total_priority += priority(common.pop())
     return total_priority
 
-print(part2(puzzle_input))
+def main():
+    filename = "2022/input.txt"
+    with open(filename) as f:
+        puzzle_input = [line.strip() for line in f]
+
+    print(part1(puzzle_input))
+    print(part2(puzzle_input))
+
+if __name__ == "__main__":
+    main()

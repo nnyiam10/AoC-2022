@@ -25,10 +25,7 @@ def main():
     with open(filename) as f:
         puzzle_input = [line.strip() for line in f]
 
-    #Part 1
     print(part1(puzzle_input))
-
-    # Part 2
     print(part2(puzzle_input))
 
 if __name__ == "__main__":
