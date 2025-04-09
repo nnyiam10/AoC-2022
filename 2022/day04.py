@@ -15,7 +15,6 @@ def part2(puzzle_input):
             overlap += 1
     return overlap
 
-        
 def main():
     filename = "2022/input.txt"
     with open(filename) as f:

@@ -1,39 +1,36 @@
 def arrange_creates(puzzle_input):
     row_length = len(puzzle_input[0])
-    crates = {}
-    for i in range(1, row_length//4 + 1):
-        crates[i] = []
-    
-    for row in puzzle_input:
-        if row[1] == "1":
-            break
+    num_stacks = row_length // 4
+    crates = {i: [] for i in range(1, num_stacks + 1)}
+
+    split_index = next(i for i, row in enumerate(puzzle_input) if row.strip().startswith("1"))
+
+    for row in puzzle_input[:split_index]:
         for i in range(0, row_length, 4):
             if row[i] == "[":
-                crates[i//4 + 1].append(row[i+1])
-        puzzle_input = puzzle_input[1:]
-    puzzle_input = puzzle_input[2:]         #to account for the rows with 1-9 and space
-    return (puzzle_input, crates)
+                stack_num = i // 4 + 1
+                crates[stack_num].append(row[i + 1])
+
+    return puzzle_input[split_index + 2:], crates
 
 def instructions(puzzle_input, crates, part):
     for row in puzzle_input:
-        new_row = row.strip().split()
-        (num, start, end) = (int(new_row[1]), int(new_row[3]), int(new_row[5]))
-        current_crates = crates[start][:num]
+        _, num, _, start, _, end = row.strip().split()
+        num, start, end = int(num), int(start), int(end)
+        to_move = crates[start][:num]
         if part == 1:
-            current_crates.reverse()
+            to_move.reverse()
         crates[start] = crates[start][num:]
-        crates[end] = current_crates + crates[end]
-    res = []
-    for key in crates:
-        res += crates[key][0]
-    return "".join(res)
+        crates[end] = to_move + crates[end]
+
+    return "".join(crates[i][0] for i in sorted(crates) if crates[i])
 
 def part1(puzzle_input):
-    (updated_input, crates) = arrange_creates(puzzle_input)
+    updated_input, crates = arrange_creates(puzzle_input)
     return instructions(updated_input, crates, 1)
 
 def part2(puzzle_input):
-    (updated_input, crates) = arrange_creates(puzzle_input)
+    updated_input, crates = arrange_creates(puzzle_input)
     return instructions(updated_input, crates, 2)
     
 def main():
