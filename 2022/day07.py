@@ -1,15 +1,5 @@
 from collections import defaultdict
 
-# def add_key_given_path(path, tree, new_dir):
-#     curr = tree.get("/")
-#     if path == "/":
-#         curr[new_dir] = {}
-#     else:
-#         split_path = path.split("/")
-#         for dir in split_path[1:]:
-#             curr =  curr.get(dir)
-#         curr[new_dir] = {}
-
 def make_tree():
     return defaultdict(make_tree)
 
