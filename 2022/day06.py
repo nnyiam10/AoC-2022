@@ -1,5 +1,3 @@
-
-
 def parts(puzzle_input, part=1):
     seen = set()
     l = 0
