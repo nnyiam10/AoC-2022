@@ -60,8 +60,7 @@ def part2(puzzle_input):
     total_space_used = get_dir_sizes(fs, sizes)
     min_diff = total_space_used - 40000000
     return min(s for s in sizes if s >= min_diff)
-    
-
+   
 def main():
     filename = "2022/input.txt"
     with open(filename) as f:
