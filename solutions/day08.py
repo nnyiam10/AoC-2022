@@ -61,6 +61,5 @@ def main():
     print(part2(puzzle_input))
 
 
-
 if __name__ == "__main__":
     main()

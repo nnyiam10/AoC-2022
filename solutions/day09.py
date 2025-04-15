@@ -1,5 +1,5 @@
 def part1(puzzle_input):
-    for 
+    pass
 
     
 
