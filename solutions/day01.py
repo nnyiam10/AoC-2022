@@ -1,4 +1,5 @@
 from heapq import nlargest
+from utils import read_lines
 
 def top_three(input):
     calorie_totals = []
@@ -16,9 +17,8 @@ def top_three(input):
     return nlargest(3, calorie_totals)
 
 def main():
-    filename = "2022/input.txt"
-    with open(filename, "r") as f:
-        puzzle_input = [line.strip() for line in f]
+    filename = "solutions/input.txt"
+    puzzle_input = read_lines(filename)
 
     #Part 1
     print(max(top_three(puzzle_input)))

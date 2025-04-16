@@ -1,3 +1,5 @@
+from utils import read_lines
+
 def part1(puzzle_input):
     contained = 0
     for pair in puzzle_input:
@@ -16,9 +18,8 @@ def part2(puzzle_input):
     return overlap
 
 def main():
-    filename = "2022/input.txt"
-    with open(filename) as f:
-        puzzle_input = [line.strip() for line in f]
+    filename = "solutions/input.txt"
+    puzzle_input = read_lines(filename)
 
     print(part1(puzzle_input))
     print(part2(puzzle_input))

@@ -1,3 +1,5 @@
+from utils import read_raw
+
 def parts(puzzle_input, part=1):
     seen = set()
     l = 0
@@ -16,9 +18,8 @@ def parts(puzzle_input, part=1):
             seen.add(puzzle_input[r])
 
 def main():
-    filename = "2022/input.txt"
-    with open(filename) as f:
-        puzzle_input = f.read().strip()
+    filename = "solutions/input.txt"
+    puzzle_input = read_raw(filename)
 
     print(parts(puzzle_input, 1))
     print(parts(puzzle_input, 2))

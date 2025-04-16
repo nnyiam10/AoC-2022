@@ -1,3 +1,5 @@
+from utils import read_lines_raw
+
 def arrange_creates(puzzle_input):
     row_length = len(puzzle_input[0])
     num_stacks = row_length // 4
@@ -34,9 +36,8 @@ def part2(puzzle_input):
     return instructions(updated_input, crates, 2)
     
 def main():
-    filename = "2022/input.txt"
-    with open(filename) as f:
-        puzzle_input = [line for line in f]
+    filename = "solutions/input.txt"
+    puzzle_input = read_lines_raw(filename)
     
     print(part1(puzzle_input))
     print(part2(puzzle_input))

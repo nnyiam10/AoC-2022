@@ -1,3 +1,5 @@
+from utils import read_lines
+
 def priority(letter):
     return ord(letter) - 38 if letter.isupper() else ord(letter) - 96
 
@@ -20,9 +22,8 @@ def part2(puzzle_input):
     return total_priority
 
 def main():
-    filename = "2022/input.txt"
-    with open(filename) as f:
-        puzzle_input = [line.strip() for line in f]
+    filename = "solutions/input.txt"
+    puzzle_input = read_lines(filename)
 
     print(part1(puzzle_input))
     print(part2(puzzle_input))

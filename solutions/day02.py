@@ -1,6 +1,4 @@
-filename = "2022/input.txt"
-puzzle_input = [r.strip() for r in open(filename).readlines()]
-
+from utils import read_lines
 
 def part1(puzzle_input):
     shape_score = {'X': 1, 'Y': 2, 'Z': 3}
@@ -21,9 +19,8 @@ def part2(puzzle_input):
     return sum(opposite_shape_score[opponent][you] + your_score[you] for opponent, you in map(str.split, puzzle_input))
 
 def main():
-    filename = "2022/input.txt"
-    with open(filename) as f:
-        puzzle_input = [line.strip() for line in f]
+    filename = "solutions/input.txt"
+    puzzle_input = read_lines(filename)
 
     print(part1(puzzle_input))
     print(part2(puzzle_input))

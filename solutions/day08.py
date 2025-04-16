@@ -1,5 +1,4 @@
-from collections import defaultdict
-import math
+from utils import read_grid_from_file
 
 def part1(puzzle_input):
     rows, cols = len(puzzle_input), len(puzzle_input[0])
@@ -53,9 +52,8 @@ def part2(puzzle_input):
     return max_scenic_score
         
 def main():
-    filename = "2022/input.txt"
-    with open(filename) as f:
-        puzzle_input = [[int(char) for char in line.strip()] for line in f]
+    filename = "solutions/input.txt"
+    puzzle_input = read_grid_from_file(filename)
     
     print(part1(puzzle_input))
     print(part2(puzzle_input))
