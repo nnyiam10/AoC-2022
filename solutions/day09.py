@@ -1,3 +1,5 @@
+from utils import read_lines
+
 DIR_TO_TUPLE = {
     "U" : (0, 1),
     "D" : (0, -1),
@@ -35,8 +37,7 @@ def unique_positions(puzzle_input, n):
 
 def main():
     filename = "solutions/input.txt"
-    with open(filename) as f:
-        puzzle_input = [line.strip() for line in f]
+    puzzle_input = read_lines(filename)
 
     # Part 1
     print(unique_positions(puzzle_input, 2))
